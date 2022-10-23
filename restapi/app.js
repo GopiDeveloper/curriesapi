@@ -26,6 +26,14 @@ app.get('/menu',(req,res) => {
     })
 })
 
+app.get('/cart',(req,res) => {
+    db.collection('eshoping').find().toArray((err,result) => {
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+
 app.get('/items/:id', (req,res) =>{
     var id =parseInt(req.params.id);
     db.collection('curryitems').find({"curry_id":id}).toArray((err,result) =>{
