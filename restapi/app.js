@@ -4,7 +4,7 @@ var dotenv = require('dotenv');
 var mongo = require('mongodb');
 var MongoClient = mongo.MongoClient;
 dotenv.config();
-var mongoUrl = "mongodb+srv://rishi143:P.Gopi143@cluster0.n58ot.mongodb.net/curries?retryWrites=true&w=majority";
+var mongoUrl = "mongodb+srv://padamatigopi:gopirishi@cluster0.fgahdyv.mongodb.net/city?retryWrites=true&w=majority";
 var cors = require('cors')
 const bodyParser = require('body-parser')
 var port = process.env.PORT || 8124;
@@ -20,12 +20,12 @@ app.get('/',(req,res) => {
     res.send("Hiii From Express")
 })
 app.get('/menu',(req,res) => {
-    db.collection('menucurries').find().toArray((err,result) => {
+    db.collection('places').find().toArray((err,result) => {
         if(err) throw err;
         res.send(result)
     })
 })
-
+/*
 app.get('/cart',(req,res) => {
     db.collection('eshoping').find().toArray((err,result) => {
         if(err) throw err;
@@ -42,10 +42,11 @@ app.get('/items/:id', (req,res) =>{
     })
 })
 
+*/
 
 MongoClient.connect(mongoUrl, (err,client) => {
     if(err) console.log("Error While Connecting");
-    db = client.db('curries');
+    db = client.db('city');
     app.listen(port,()=>{
         console.log(`listening on port ${port}`)
     })
